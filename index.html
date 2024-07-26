@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta Condicional con Vue.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <form>
+      <!-- Pregunta 1 -->
+      <div>
+        <label>¿De qué país provienes?</label><br>
+        <input type="radio" id="mexico" value="México" v-model="selectedCountry">
+        <label for="mexico">México</label><br>
+        <input type="radio" id="holanda" value="Holanda" v-model="selectedCountry">
+        <label for="holanda">Holanda</label><br>
+        <input type="radio" id="otro" value="Otro" v-model="selectedCountry">
+        <label for="otro">Otro</label>
+      </div>
+
+      <!-- Pregunta 2 (condicional) -->
+      <div v-if="selectedCountry === 'Otro'">
+        <label for="otherCountry">¿Cuál es el nombre de tu país?</label><br>
+        <input type="text" id="otherCountry" v-model="otherCountry">
+      </div>
+    </form>
+
+    <div>
+      <h3>Resumen:</h3>
+      <p><strong>País seleccionado:</strong> {{ selectedCountry }}</p>
+      <p v-if="selectedCountry === 'Otro'"><strong>Nombre del otro país:</strong> {{ otherCountry }}</p>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        selectedCountry: '',
+        otherCountry: ''
+      }
+    });
+  </script>
+</body>
+</html>
