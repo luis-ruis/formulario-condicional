@@ -1,31 +1,40 @@
 <template>
-  <form>
-    
-    <div>
-      <label>¿De qué país provienes?</label><br>
-      <input type="radio" id="mexico" value="México" v-model="selectedCountry">
-      <label for="mexico">México</label><br>
-      <input type="radio" id="holanda" value="Holanda" v-model="selectedCountry">
-      <label for="holanda">Holanda</label><br>
-      <input type="radio" id="otro" value="Otro" v-model="selectedCountry">
-      <label for="otro">Otro</label>
-    </div>
-
-    <!-- Pregunta condicional -->
-    <div v-if="selectedCountry === 'Otro'">
-      <label for="otherCountry">¿Cuál es el nombre de tu país?</label><br>
-      <input type="text" id="otherCountry" v-model="otherCountry">
-    </div>
-  </form>
+  <div>
+    <FormQuestion
+      v-for="question in questions"
+      :key="question.id"
+      :question="question"
+      :answers="answers"
+      :setAnswer="setAnswer"
+    />
+  </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script>
+import { defineComponent, reactive } from 'vue';
+import FormQuestion from './components/FormQuestion.vue';
+import formConfig from './form-config.json';
 
-const selectedCountry = ref('');
-const otherCountry = ref('');
+export default defineComponent({
+  name: 'App',
+  components: { FormQuestion },
+  setup() {
+    const questions = formConfig.questions;
+    const answers = reactive({});
+
+    const setAnswer = (questionId, value) => {
+      answers[questionId] = value;
+    };
+
+    return {
+      questions,
+      answers,
+      setAnswer
+    };
+  }
+});
 </script>
 
-<style scoped>
-
+<style>
+/* Add your styles here */
 </style>

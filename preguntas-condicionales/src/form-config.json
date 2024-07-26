@@ -1,0 +1,87 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "type": "select",
+      "label": "Seleccciona tu país de procedencia",
+      "options": [
+        { "value": "usa", "label": "USA" },
+        { "value": "canada", "label": "Canada" },
+        { "value": "mexico", "label": "México" },
+        { "value": "otro", "label": "Otro" }
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "q2",
+      "type": "select",
+      "label": "Seleccciona el estado: ",
+      "options": [
+        { "value": "guerrero", "label": "Guerrero" },
+        { "value": "veracruz", "label": "Veracruz" },
+        { "value": "oaxaca", "label": "Oaxaca" },
+        { "value": "cdmx", "label": "Ciudad de México" }
+      ],
+      "dependencies": [
+        { "questionId": "q1", "value": "mexico" }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "input",
+      "label": "Escribe tu país de procedencia: ",
+      "dependencies": [
+        { "questionId": "q1", "value": "otro" }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "select",
+      "label": "Tipo de familia",
+      "options": [
+        { "value": "monoparental", "label": "Monoparental" },
+        { "value": "biparental", "label": "Biparental" },
+        { "value": "otro", "label": "Prefiero no decirlo" }
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "q5",
+      "type": "select",
+      "label": "Tipo de pariente: ",
+      "options": [
+        { "value": "madre", "label": "Madre" },
+        { "value": "padre", "label": "Padre" }
+      ],
+      "dependencies": [
+        { "questionId": "q4", "value": "monoparental" }
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "input",
+      "label": "Nombre del padre: ",
+      "dependencies": [
+        { "questionId": "q5", "value": "padre" },
+        { "questionId": "q4", "value": "biparental" }
+      ]
+    },
+    {
+      "id": "q7",
+      "type": "input",
+      "label": "Nombre de la madre: ",
+      "dependencies": [
+        { "questionId": "q5", "value": "madre" },
+        { "questionId": "q4", "value": "biparental" }
+      ]
+    },
+    {
+      "id": "q8",
+      "type": "text",
+      "label": "Lo siento, no podemos aceptarte. :( ",
+      "dependencies": [
+        { "questionId": "q2", "value": "oaxaca" }
+      ]
+    }
+  ]
+}
