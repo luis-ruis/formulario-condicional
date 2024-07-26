@@ -59,7 +59,7 @@
     },
     {
       "id": "q6",
-      "type": "input",
+      "type": "text",
       "label": "Nombre del padre: ",
       "dependencies": [
         { "questionId": "q5", "value": "padre" },
@@ -76,11 +76,65 @@
       ]
     },
     {
-      "id": "q8",
+      "id": "q20",
       "type": "text",
       "label": "Lo siento, no podemos aceptarte. :( ",
       "dependencies": [
         { "questionId": "q2", "value": "oaxaca" }
+      ]
+    },
+    {
+      "id": "q100",
+      "type": "select",
+      "label": "¿Cuántos miembros son en tu familia?: ",
+      "options": [
+        { "value": "uno", "label": "1" },
+        { "value": "dos", "label": "2" },
+        { "value": "tres", "label": "3" },
+        { "value": "cuatro", "label": "4" }
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "q101",
+      "type": "input",
+      "label": "Nombre del integrante: ",
+      "options": [],
+      "dependencies": [
+        { "questionId": "q100", "value": "uno" },
+        { "questionId": "q100", "value": "dos" },
+        { "questionId": "q100", "value": "tres" },
+        { "questionId": "q100", "value": "cuatro" }
+      ]
+    },
+    {
+      "id": "q102",
+      "type": "input",
+      "label": "Nombre del integrante: ",
+      "options": [],
+      "dependencies": [
+        { "questionId": "q100", "value": "dos" },
+        { "questionId": "q100", "value": "tres" },
+        { "questionId": "q100", "value": "cuatro" }
+      ]
+    },
+    {
+      "id": "q103",
+      "type": "input",
+      "label": "Nombre del integrante: ",
+      "options": [],
+      "dependencies": [
+        { "questionId": "q100", "value": "tres" },
+        { "questionId": "q100", "value": "cuatro" }
+      ]
+    },
+    {
+      "id": "q104",
+      "type": "input",
+      "label": "Nombre del integrante: ",
+      "options": [],
+      "dependencies": [
+        { "questionId": "q100", "value": "cuatro" }
       ]
     }
   ]
